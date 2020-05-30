@@ -42,7 +42,7 @@ void setPosition(void *component, Vector3 newPosition){
 
 void DoMassKill(std::vector<void*> enemyPlayers){
 	for(int i = 0; i < enemyPlayers.size(); i++){
-                if(myPlayer && Player::get_isLiving(player) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(player)){
+                if(myPlayer && Player::get_isLiving(enemyPlayers[i]) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(enemyPlayers[i])){
                 Vector3 myPosition = getPosition(myPlayer);
                 setPosition(enemyPlayers[i], Vector3(myPosition.x, myPosition.y, myPosition.z + 1));
 		}
