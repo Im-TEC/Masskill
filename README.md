@@ -1,6 +1,6 @@
 /*
-*     Made By TEC1204
-*     Discord: TEC1204#8384
+*     Made By TEC
+*     Discord: tec#0001
 *     Date: 3/30/20
 *     Time: 5:41
 *     Game: Forward Assault
