@@ -39,21 +39,14 @@ void setPosition(void *component, Vector3 newPosition){
   Transform$$set_position_Injected(transform, newPosition);
 }
 
-void *myPlayer = NULL;
 
-void DoMassKill(void *player){
-  /* Here we see if the Player is mine */
-  if(Player::get_isMine(player)){
-    /* Set myPlayer varible to the Player sense the Player is mine*/
-    myPlayer = player;
-    /* End. Stopping the process*/
-    return;
-  }
-  /* Here we do all the checks to make sure that the Player is a live and aint on my team and my Player is a thing and a live */
-  if(myPlayer && Player::get_isLiving(player) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(player)){
-    /* Get the position of my Player*/
-    Vector3 myPosition = getPosition(myPlayer);
-    /* Set the enemy Player position to my Player position*/
-    setPosition(player, Vector3(myPosition.x, myPosition.y, myPosition.z + 1));
-  }
+void DoMassKill(std::vector<void*> enemyPlayers){
+	for(int i = 0; i < enemyPlayers.size(); i++){
+                if(myPlayer && Player::get_isLiving(enemyPlayers[i]) && Player::get_isLiving(myPlayer) && Player::get_Team(myPlayer) != Player::get_Team(enemyPlayers[i])){
+                Vector3 myPosition = getPosition(myPlayer);
+                setPosition(enemyPlayers[i], Vector3(myPosition.x, myPosition.y, myPosition.z + 1));
+		}
+	}
 }
+ 
+
